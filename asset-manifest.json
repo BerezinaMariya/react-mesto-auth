@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/BerezinaMariya/react-mesto-auth/static/css/main.f32cfcb8.css",
+    "main.js": "/BerezinaMariya/react-mesto-auth/static/js/main.1dca0ab2.js",
+    "static/js/787.2df4b1c8.chunk.js": "/BerezinaMariya/react-mesto-auth/static/js/787.2df4b1c8.chunk.js",
+    "static/media/Inter-Medium.woff?v=3.19": "/BerezinaMariya/react-mesto-auth/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff": "/BerezinaMariya/react-mesto-auth/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff": "/BerezinaMariya/react-mesto-auth/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2?v=3.19": "/BerezinaMariya/react-mesto-auth/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2": "/BerezinaMariya/react-mesto-auth/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/BerezinaMariya/react-mesto-auth/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/header-logo.svg": "/BerezinaMariya/react-mesto-auth/static/media/header-logo.08a054fe713556ae547305bb38c8130d.svg",
+    "static/media/cardElement-group.svg": "/BerezinaMariya/react-mesto-auth/static/media/cardElement-group.1ad06e85f169668a1f36.svg",
+    "index.html": "/BerezinaMariya/react-mesto-auth/index.html",
+    "static/media/infoTooltip-registration-unsucsess.svg": "/BerezinaMariya/react-mesto-auth/static/media/infoTooltip-registration-unsucsess.df8eddf661ff88f2d0efd3d570d14309.svg",
+    "static/media/cardElement-delete-button.svg": "/BerezinaMariya/react-mesto-auth/static/media/cardElement-delete-button.ce3b64935accf9b8212e.svg",
+    "static/media/infoTooltip-registration-sucsess.svg": "/BerezinaMariya/react-mesto-auth/static/media/infoTooltip-registration-sucsess.1b6082f862eac35e2514460237d96ecc.svg",
+    "static/media/cardElement-group-fill.svg": "/BerezinaMariya/react-mesto-auth/static/media/cardElement-group-fill.35948469632d0421d697.svg",
+    "static/media/header-menu-button-type-open.svg": "/BerezinaMariya/react-mesto-auth/static/media/header-menu-button-type-open.a46d5c1c53c02d60fc80.svg",
+    "static/media/profile-edit-button.svg": "/BerezinaMariya/react-mesto-auth/static/media/profile-edit-button.6c7bf05444b9793fdf6e.svg",
+    "static/media/profile-edit-avatar-button.svg": "/BerezinaMariya/react-mesto-auth/static/media/profile-edit-avatar-button.ae1a976ddb506239e9f0.svg",
+    "static/media/popup-close-button.svg": "/BerezinaMariya/react-mesto-auth/static/media/popup-close-button.039f1f5203f653b4bacd.svg",
+    "static/media/profile-add-button.svg": "/BerezinaMariya/react-mesto-auth/static/media/profile-add-button.bed8c136e13907f5eefb.svg",
+    "static/media/header-menu-button-type-close.svg": "/BerezinaMariya/react-mesto-auth/static/media/header-menu-button-type-close.b793e07c3f4c19e26c11.svg",
+    "main.f32cfcb8.css.map": "/BerezinaMariya/react-mesto-auth/static/css/main.f32cfcb8.css.map",
+    "main.1dca0ab2.js.map": "/BerezinaMariya/react-mesto-auth/static/js/main.1dca0ab2.js.map",
+    "787.2df4b1c8.chunk.js.map": "/BerezinaMariya/react-mesto-auth/static/js/787.2df4b1c8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f32cfcb8.css",
+    "static/js/main.1dca0ab2.js"
+  ]
+}
