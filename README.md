@@ -18,4 +18,4 @@
 * Портирование проекта на «Реакт».
 * Регистрация и авторизация пользователя. Использование защищенных роутов.
 
-Ссылка на проект на GitHub Pages: https://berezinamariya.github.io/mesto/
+Ссылка на проект на GitHub Pages: https://berezinamariya.github.io/react-mesto-auth/

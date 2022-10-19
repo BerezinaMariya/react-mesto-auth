@@ -1,50 +1,100 @@
-import React from 'react';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useContext, useState, useEffect } from "react";
+import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { FormValidator } from "../FormValidator/FormValidator";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function EditProfilePopup(props) {
   // Подписка на контекст
-  const currentUser = React.useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
+  const { values, handleChange, errors, handleOpenForm, isFormValid, resetForm } = FormValidator();
 
-  const [name, setName] = React.useState('');
-  const [description, setDescription] = React.useState('');
-
-  // Обработчики изменения инпутов обновляют стейт
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
-
-  function handleDescriptionChange(e) {
-    setDescription(e.target.value);
-  }
+  const [name, setName] = useState("");
+  const [about, setAbout] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userAbout, setUserAbout] = useState("");
 
   function handleSubmit(evt) {
     // Запрещаем браузеру переходить по адресу формы
     evt.preventDefault();
-      
+
     //Передаём значения управляемых компонентов во внешний обработчик
     props.onUpdateUser({
-      name: name,
-      about: description,
+      name: userName,
+      about: userAbout
     });
-
-    props.onClose();
   }
 
   // После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.
-  React.useEffect(() => {
+  useEffect(() => {
     setName(currentUser.name);
-    setDescription(currentUser.about);
+    setAbout(currentUser.about);
   }, [currentUser, props.isOpen]);
 
+  useEffect(() => {
+    if (values.name) {
+      setUserName(values.name);
+    } else {
+      setUserName(name);
+    }
+
+    if (values.about) {
+      setUserAbout(values.about);
+    } else {
+      setUserAbout(about);
+    }
+  }, [values.name, values.about, name, about])
+
   return (
-    <PopupWithForm name="edit-profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={props.isOpen} onClose={props.onClose} onCloseByOverlay={props.onCloseByOverlay} onCloseByEsc={props.onCloseByEsc} onSubmit={handleSubmit} onValidation={props.onValidation} isLoading={props.isLoading}>
-      <input type="text" name="name" id="input-name" className="form__input form__input_data_name" required minLength="2" maxLength="40" value={`${name}`} onChange={handleNameChange} />
-      <span className="input-name-error form__input-error"></span>
-      <input type="text" name="about" id="input-about" className="form__input form__input_data_about" required minLength="2" maxLength="200" value={`${description}`} onChange={handleDescriptionChange} />
-      <span className="input-about-error form__input-error"></span>
+    <PopupWithForm
+      name="edit-profile"
+      title="Редактировать профиль"
+      buttonText="Сохранить"
+      isOpen={props.isOpen}
+      isClosed={props.isClosed}
+      setClosed={props.setClosed}
+      onClose={props.onClose}
+      onCloseByOverlay={props.onCloseByOverlay}
+      onCloseByEsc={props.onCloseByEsc}
+      onSubmit={handleSubmit}
+      resetForm={resetForm}
+      isOpenFormValid={handleOpenForm}
+      isFormValid={isFormValid}
+      isLoading={props.isLoading}
+    >
+      <input
+        type="text"
+        name="name"
+        id="input-name"
+        className={`form__input ${errors.name & errors.name !== '' ? "form__input_type_error" : ""}`}
+        required
+        minLength="2"
+        maxLength="40"
+        value={`${values.name ? values.name : name}`}
+        onChange={handleChange}
+      />
+      <span
+        name="name"
+        className={`form__input-error ${!isFormValid ? "form__input-error_active" : ""}`}>
+          {`${errors.name ? errors.name : ''}`}
+      </span>
+      <input
+        type="text"
+        name="about"
+        id="input-about"
+        className={`form__input ${errors.about & errors.about !== '' ? "form__input_type_error" : ""}`}
+        required
+        minLength="2"
+        maxLength="200"
+        value={`${values.about ? values.about : about}`}
+        onChange={handleChange}
+      />
+      <span
+        name="about"
+        className={`form__input-error ${!isFormValid ? "form__input-error_active" : ""}`}>{
+        `${errors.about ? errors.about : ''}`}
+      </span>
     </PopupWithForm>
   );
 }
-                  
+
 export default EditProfilePopup;

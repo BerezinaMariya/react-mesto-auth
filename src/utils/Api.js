@@ -1,7 +1,7 @@
 class Api {
-  constructor({ baseUrl, headers }) {
-    this.baseUrl = baseUrl;
-    this.headers = headers;
+  constructor() {
+    this.baseUrl = "https://mesto.nomoreparties.co/v1/cohort-49";
+    this.newBaseUrl = "https://auth.nomoreparties.co";
   }
 
   //Проверка ответа от сервера
@@ -17,89 +17,133 @@ class Api {
   //Получение массива исходных карточек
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
-      headers: this.headers
-    })
-    .then(this._checkResponse)
+      headers: {
+        Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+        "Content-Type": "application/json",
+      },
+    }).then(this._checkResponse);
   }
 
   //Получение данных пользователя
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
-      headers: this.headers
-    })
-    .then(this._checkResponse)
+      headers: {
+        Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+        "Content-Type": "application/json",
+      },
+    }).then(this._checkResponse);
   }
 
   //Отправка отредактированных данных пользователя
   setUserInfo(user) {
     return fetch(`${this.baseUrl}/users/me`, {
-      method: 'PATCH',
-      headers: this.headers,
+      method: "PATCH",
+      headers: {
+        Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name: user.name,
-        about: user.about
-      })
-    })
-    .then(this._checkResponse)
+        about: user.about,
+      }),
+    }).then(this._checkResponse);
   }
 
   //Отправка отредактированного аватара
   setAvatar(avatar) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: this.headers,
+      method: "PATCH",
+      headers: {
+        Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         avatar: avatar,
-      })
-    })
-    .then(this._checkResponse)
+      }),
+    }).then(this._checkResponse);
   }
 
   //Отправка новой созданной карточки на сервер
   setNewCard(card) {
     return fetch(`${this.baseUrl}/cards`, {
-      method: 'POST',
-      headers: this.headers,
+      method: "POST",
+      headers: {
+        Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name: card.name,
-        link: card.link
-      })
-    })
-    .then(this._checkResponse)
+        link: card.link,
+      }),
+    }).then(this._checkResponse);
   }
 
   //Удаление карточки с сервера
   deleteCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
-      headers: this.headers
-    })
-    .then(this._checkResponse)
+      method: "DELETE",
+      headers: {
+        Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+        "Content-Type": "application/json",
+      },
+    }).then(this._checkResponse);
   }
 
   //Установка и снятие лайка
   changeLikeCardStatus(cardId, notLiked) {
     if (notLiked) {
       return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
-        method: 'PUT',
-        headers: this.headers
-      })
-      .then(this._checkResponse)
+        method: "PUT",
+        headers: {
+          Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+          "Content-Type": "application/json",
+        },
+      }).then(this._checkResponse);
     } else {
       return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
-        method: 'DELETE',
-         headers: this.headers,
-      })
-      .then(this._checkResponse)
+        method: "DELETE",
+        headers: {
+          Authorization: "c8e88be4-173c-499a-97f5-515e9331d7ba",
+          "Content-Type": "application/json",
+        },
+      }).then(this._checkResponse);
     }
   }
 
+  //Регистрация
+  register(password, email) {
+    return fetch(`${this.newBaseUrl}/signup`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password, email }),
+    }).then(this._checkResponse);
+  }
+
+  //Авторизация
+  authorize(password, email) {
+    return fetch(`${this.newBaseUrl}/signin`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password, email }),
+    }).then(this._checkResponse);
+  }
+
+  //Проверка токена, получение email
+  getEmail(token) {
+    return fetch(`${this.newBaseUrl}/users/me`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkResponse);
+  }
 }
 
-export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-49',
-  headers: {
-    authorization: 'c8e88be4-173c-499a-97f5-515e9331d7ba',
-    'Content-Type': 'application/json'
-  }
-}); 
+export const api = new Api();

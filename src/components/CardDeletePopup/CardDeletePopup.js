@@ -1,18 +1,32 @@
-import React from 'react';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { FormValidator } from "../FormValidator/FormValidator";
 
 function CardDeletePopup(props) {
+  const { values, handleChange, errors, handleOpenForm, isFormValid, resetForm } = FormValidator();
 
   function handleSubmit(evt) {
     evt.preventDefault();
 
     props.onCardDelete(props.card);
-    props.onClose();
-  } 
+  }
 
   return (
-    <PopupWithForm name="delete-card" title="Вы уверены?" buttonText="Да" isOpen={props.isOpen} onClose={props.onClose} onCloseByOverlay={props.onCloseByOverlay} onCloseByEsc={props.onCloseByEsc} onSubmit={handleSubmit} onValidation={props.onValidation} isLoading={props.isLoading}/>
+    <PopupWithForm
+      name="delete-card"
+      title="Вы уверены?"
+      buttonText="Да"
+      isOpen={props.isOpen}
+      isClosed={props.isClosed}
+      setClosed={props.setClosed}
+      onClose={props.onClose}
+      onCloseByOverlay={props.onCloseByOverlay}
+      onCloseByEsc={props.onCloseByEsc}
+      onSubmit={handleSubmit}
+      isOpenFormValid={handleOpenForm}
+      isFormValid={isFormValid}
+      isLoading={props.isLoading}
+    />
   );
 }
-                  
+
 export default CardDeletePopup;
