@@ -1,6 +1,5 @@
 {
   "name": "react-mesto-auth",
-  "homepage": "https://github.com/BerezinaMariya/react-mesto-auth",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^5.2.1"
+    "react-router-dom": "^5.2.1",
+    "webpack": "^5.74.0"
   }
 }
