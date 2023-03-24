@@ -11,7 +11,7 @@ class Api {
     }
 
     // если ошибка, отклоняем промис
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(res);
   }
 
   //Получение массива исходных карточек
